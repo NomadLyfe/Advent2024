@@ -1,5 +1,5 @@
 
-with open("puzzle_1_input.txt", "r") as file:
+with open("puzzle_1-2_input.txt", "r") as file:
     input = file.read().split("\n")
     input.pop()
     list_1 = sorted([int(el.split("   ")[0]) for el in input])
