@@ -11,15 +11,16 @@ memory_positions = memory.strip().split(" ")
 memory_positions = [x for x in memory_positions if x != ""]
 reversed_memory_positions = memory_positions[::-1]
 for pos, pos_val in enumerate(reversed_memory_positions):
-    pos = len(memory_positions) - 1 - pos
+    fwd_pos = len(memory_positions) - 1 - pos
     if (pos_val != ".") and ("." in memory_positions):
-        print(pos+1)
         first_empty_pos = memory_positions.index(".")
+        if first_empty_pos >= fwd_pos:
+            break
         memory_positions[first_empty_pos] = pos_val
-        memory_positions = memory_positions[:pos]
-    if not "." in memory_positions:
-        break
+        memory_positions[fwd_pos] = "."
+print(memory_positions)
 p1 = 0
 for i, el in enumerate(memory_positions):
-    p1 += (i*int(el))
+    if el != ".":
+        p1 += (i*int(el))
 print(p1)
