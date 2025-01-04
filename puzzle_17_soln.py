@@ -9,6 +9,7 @@ for i, (file, empty) in enumerate(modified_input):
         memory += " . " * int(empty)
 memory_positions = memory.strip().split(" ")
 memory_positions = [x for x in memory_positions if x != ""]
+print(len(memory_positions))
 reversed_memory_positions = memory_positions[::-1]
 for pos, pos_val in enumerate(reversed_memory_positions):
     fwd_pos = len(memory_positions) - 1 - pos
