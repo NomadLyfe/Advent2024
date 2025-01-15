@@ -40,6 +40,7 @@ def check_if_safe(arr):
         prev_trend = trend
     return safe, trends
 
+
 with open("puzzle_3-4_input.txt", "r") as file:
     reports = file.read().split("\n")
     reports.pop()

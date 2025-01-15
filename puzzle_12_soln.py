@@ -22,6 +22,7 @@ guard_row, guard_col = guard_row_start, guard_col_start
 posits_visited = set()
 guard_direction = 0  # Initial direction (UP)
 
+
 # Move guard
 def move_guard(r, c, direction, nor, noc):
     dr, dc = directions[direction]
@@ -32,7 +33,8 @@ def move_guard(r, c, direction, nor, noc):
         return r, c, (direction + 1) % 4  # Turn clockwise
     else:
         return nr, nc, direction  # Move forward
-    
+
+
 new_obstacles = []
 for new_obj_r in range(max_row):
     for new_obj_c in range(max_col):
@@ -44,6 +46,8 @@ for new_obj_r in range(max_row):
                 new_obstacles.append((guard_row, guard_col))
                 break
             seen_points.add((guard_row, guard_col, guard_direction))
-            guard_row, guard_col, guard_direction = move_guard(guard_row, guard_col, guard_direction, new_obj_r, new_obj_c)
+            guard_row, guard_col, guard_direction = move_guard(
+                guard_row, guard_col, guard_direction, new_obj_r, new_obj_c
+            )
 
 print(len(new_obstacles))

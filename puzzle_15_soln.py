@@ -9,10 +9,10 @@ for y, row in enumerate(rows):
             for j, r in enumerate(rows):
                 for i, s in enumerate(r):
                     if s == symbol and i != x and j != y:
-                        dx = i-x
-                        dy = j-y
-                        if 0 <= x-dx < len(rows[0]) and 0 <= y-dy < len(rows):
-                            antinodes.add((x-dx, y-dy))
-                        if 0 <= i+dx < len(rows[0]) and 0 <= j+dy < len(rows):
-                            antinodes.add((i+dx, j+dy))
+                        dx = i - x
+                        dy = j - y
+                        if 0 <= x - dx < len(rows[0]) and 0 <= y - dy < len(rows):
+                            antinodes.add((x - dx, y - dy))
+                        if 0 <= i + dx < len(rows[0]) and 0 <= j + dy < len(rows):
+                            antinodes.add((i + dx, j + dy))
 print(len(antinodes))

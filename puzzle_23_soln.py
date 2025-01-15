@@ -1,14 +1,15 @@
 # Read and process input
 with open("puzzle_23-24_input.txt", "r") as file:
-    input_data_rows = file.read().strip().split('\n')
+    input_data_rows = file.read().strip().split("\n")
     grid = [[char for char in row] for row in input_data_rows]
 
 seen = []
-plants = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+plants = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 regions = {}
 p1 = 0
 
-class Region():
+
+class Region:
     def __init__(self, x, y):
         self.plots = [(x, y)]
         self.perim = 4
@@ -16,7 +17,7 @@ class Region():
         seen.append((x, y))
 
     def treverse_tree(self, x, y, plot):
-        for new_x, new_y in [(x, y+1), (x, y-1), (x+1, y), (x-1, y)]:
+        for new_x, new_y in [(x, y + 1), (x, y - 1), (x + 1, y), (x - 1, y)]:
             if 0 <= new_x < len(grid[0]) and 0 <= new_y < len(grid):
                 num_same_neihbors = 0
                 if grid[new_y][new_x] == plot:
@@ -29,9 +30,9 @@ class Region():
                         num_same_neihbors += 1
                 if num_same_neihbors > 0:
                     self.perim -= num_same_neihbors
-    
+
     def price(self):
-        return (self.area * self.perim)
+        return self.area * self.perim
 
 
 for plant in plants:

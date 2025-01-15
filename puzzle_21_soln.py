@@ -8,8 +8,13 @@ for _ in range(25):
         if stone == "0":
             stones[i] = "1"
         elif len(stone) % 2 == 0:
-            stones[i] = (str(int(stone[:len(stone)//2])), str(int(stone[len(stone)//2:])))
+            stones[i] = (
+                str(int(stone[: len(stone) // 2])),
+                str(int(stone[len(stone) // 2 :])),
+            )
         else:
             stones[i] = str(int(stone) * 2024)
-    stones = [s for stone in stones for s in (stone if isinstance(stone, tuple) else [stone])]
+    stones = [
+        s for stone in stones for s in (stone if isinstance(stone, tuple) else [stone])
+    ]
 print(len(stones))

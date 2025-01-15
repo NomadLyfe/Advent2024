@@ -1,4 +1,3 @@
-
 with open("puzzle_1-2_input.txt", "r") as file:
     input = file.read().split("\n")
     input.pop()

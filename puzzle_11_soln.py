@@ -12,6 +12,7 @@ with open("puzzle_11-12_input.txt", "r") as file:
             if char == "^":
                 guard_row, guard_col = row_i, col_i
     posits_visited.add((guard_row, guard_col))
+
     def move_guard(direction):
         global guard_row, guard_col, guard_direction, posits_visited
         if direction == "UP":
@@ -38,6 +39,12 @@ with open("puzzle_11-12_input.txt", "r") as file:
                 posits_visited.add((guard_row, guard_col))
             else:
                 guard_direction = "UP"
-    while guard_row != 0 and guard_col != 0 and guard_row != max_row and guard_col != max_col:
+
+    while (
+        guard_row != 0
+        and guard_col != 0
+        and guard_row != max_row
+        and guard_col != max_col
+    ):
         move_guard(guard_direction)
     print(len(posits_visited))
