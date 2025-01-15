@@ -1,14 +1,15 @@
 # Read and process input
 with open("puzzle_23-24_input.txt", "r") as file:
-    input_data_rows = file.read().strip().split('\n')
+    input_data_rows = file.read().strip().split("\n")
     grid = [[char for char in row] for row in input_data_rows]
 
 seen = set()
-plants = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+plants = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 regions = {}
 p2 = 0
 
-class Region():
+
+class Region:
     def __init__(self, x, y):
         self.plots = [(x, y)]
         self.area = 1
@@ -41,12 +42,22 @@ class Region():
         sorted_sides = sorted(sides)
         unique_sides = 0
         seen_sides = []
-        for side in (sorted_sides):
+        for side in sorted_sides:
             if side not in seen_sides:
                 unique_sides += 1
                 seen_sides.append(side)
-            for side_2 in (sorted_sides):
-                if side != side_2 and ((side[0], side[2], side[3]) == (side_2[0], side_2[2], side_2[3]) and abs(side[1] - side_2[1])==1) or ((side[1], side[2], side[3]) == (side_2[1], side_2[2], side_2[3]) and abs(side[0] - side_2[0])==1):
+            for side_2 in sorted_sides:
+                if (
+                    side != side_2
+                    and (
+                        (side[0], side[2], side[3]) == (side_2[0], side_2[2], side_2[3])
+                        and abs(side[1] - side_2[1]) == 1
+                    )
+                    or (
+                        (side[1], side[2], side[3]) == (side_2[1], side_2[2], side_2[3])
+                        and abs(side[0] - side_2[0]) == 1
+                    )
+                ):
                     seen_sides.append(side_2)
         return unique_sides
 
@@ -55,6 +66,7 @@ class Region():
         unique_verticals = self._count_unique_sides(self.vertical_sides)
         total_sides = unique_horizontals + unique_verticals
         return self.area * total_sides
+
 
 for plant in plants:
     regions[plant] = []
