@@ -52,3 +52,5 @@ for game in games:
         total_tokens += min_cost
 
 print(f"Prizes won: {prizes_won}, Total tokens: {total_tokens}")
+
+print("Test print, sent from iPhone")
